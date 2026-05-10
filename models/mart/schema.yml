@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: mart_BI_drugresponse
+    description: "Capa Mart: Datos con valor agregado para el análsis/tableros"
+    columns:
+      - name: nivel_efectividad_droga
+        description: "Clasificación del AUC para ver efectividad"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Alta Efectividad", "Moderada", "Baja Efectividad"]
+
+  - name: mart_ML_drugresponse
+    description: "Capa Mart: Datos optimizados con métricas para ML."
+    columns:
+      - name: is_public_binary
+        description: "Flag binario. 1 si es publico, 0 si no"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+
+      - name: dose_amplitude
+        description: "Diferencia entre la concentración máxima y mínima."
+        tests:
+          - not_null

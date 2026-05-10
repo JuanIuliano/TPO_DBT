@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='view') }}
 
 WITH raw_source AS (
     SELECT * FROM {{ ref('bronze_drugresponse') }}
